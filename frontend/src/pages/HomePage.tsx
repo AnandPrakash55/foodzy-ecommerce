@@ -2,6 +2,100 @@ import { useEffect, useState } from "react";
 import client from "../api/client";
 import ProductCard, { Product } from "../components/products/ProductCard";
 
+// ------------------------------------------
+// ★ POPULAR PRODUCTS DATA
+// ------------------------------------------
+export const products: Product[] = [
+  {
+    id: 101,
+    name: "Seeds Of Change Organic Quinoa",
+    slug: "organic-quinoa",
+    description: "Protein-rich quinoa sourced from certified organic farms.",
+    imageUrl: "https://images.unsplash.com/photo-1505253468034-514d2507d914?auto=format&fit=crop&w=600&q=80",
+    badge: { label: "Hot", variant: "hot" },
+    unitLabel: "500g pack",
+    price: 32.85,
+    originalPrice: 39.0,
+    rating: 4.9,
+    reviewsCount: 72,
+    isFeatured: true,
+    isDailyDeal: true,
+    highlightCopy: "Gluten Free • High Protein • Fiber Rich",
+    categoryId: 5,
+  },
+
+  
+
+  {
+    id: 103,
+    name: "Blue Diamond Almonds Lightly Salted",
+    slug: "almonds-light",
+    description: "Premium Californian almonds, slow roasted with sea salt.",
+    imageUrl: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=600&q=80",
+    badge: { label: "-15%", variant: "sale" },
+    unitLabel: "200g pack",
+    price: 23.85,
+    originalPrice: 28.0,
+    rating: 4.8,
+    reviewsCount: 112,
+    categoryId: 3,
+  },
+
+  {
+    id: 104,
+    name: "Encore Seafoods Stuffed Salmon",
+    slug: "stuffed-salmon",
+    description: "Restaurant-style stuffed salmon fillets ready to bake.",
+    imageUrl: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80",
+    badge: { label: "Sale", variant: "sale" },
+    unitLabel: "2 fillets",
+    price: 35.85,
+    originalPrice: 42.0,
+    rating: 4.6,
+    reviewsCount: 39,
+    categoryId: 4,
+  },
+
+  
+
+  {
+    id: 106,
+    name: "Organic Vanilla Farm Watermelon",
+    slug: "organic-watermelon",
+    description: "Seedless watermelon, naturally sweet and hydrating.",
+    imageUrl: "https://images.unsplash.com/photo-1439127989242-c3749a012eac?auto=format&fit=crop&w=600&q=80",
+    badge: { label: "New", variant: "new" },
+    unitLabel: "5kg whole",
+    price: 48.85,
+    originalPrice: 52.0,
+    rating: 4.5,
+    reviewsCount: 33,
+    categoryId: 6,
+  },
+
+  
+
+  {
+    id: 108,
+    name: "Simply Lemonade with Raspberry",
+    slug: "rasp-lemonade",
+    description: "Small batch lemonade blended with fresh raspberries.",
+    imageUrl: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=600&q=80",
+    badge: { label: "Hot", variant: "hot" },
+    unitLabel: "1L bottle",
+    price: 15.95,
+    originalPrice: 19.0,
+    rating: 4.8,
+    reviewsCount: 48,
+    categoryId: 2,
+  },
+];
+ 
+
+
+// -----------------------------------------------------
+// ★ HOMEPAGE COMPONENT
+// -----------------------------------------------------
 export default function HomePage() {
   const [popular, setPopular] = useState<Product[]>([]);
   const [activeTab, setActiveTab] = useState("all");
@@ -16,191 +110,165 @@ export default function HomePage() {
 
   return (
     <>
+      {/* ----------------------------------------------------- */}
       {/* HERO SECTION */}
-      <section className="bg-green-50 py-16">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="bg-green-600 text-white text-xs px-3 py-1 rounded-full">
-              100% Organic Vegetables
-            </span>
+      {/* ----------------------------------------------------- */}
+      <section className="relative bg-[#f7f7f7] py-24 overflow-hidden">
 
-            <h1 className="text-4xl md:text-5xl font-bold mt-4 leading-tight">
-              The best way to stuff your wallet.
-            </h1>
+  {/* Floating Doodles */}
+  <img
+    src="/doodle-top.png"
+    className="absolute top-6 left-10 w-10 opacity-60"
+  />
+  <img
+    src="/doodle-small.png"
+    className="absolute bottom-10 left-10 w-12 opacity-60"
+  />
+  <img
+    src="/doodle-fruits.png"
+    className="absolute top-10 right-1/3 w-10 opacity-60"
+  />
 
-            <p className="text-gray-600 mt-3">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
-              reiciendis beatae consequuntur.
-            </p>
+  <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+    
+    {/* LEFT TEXT SIDE */}
+    <div>
+      <span className="text-[12px] font-semibold text-red-500">
+        100% <span className="text-gray-800">Organic Vegetables</span>
+      </span>
 
-            <div className="flex mt-6">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="w-full px-4 py-2 rounded-l-lg border border-gray-300 focus:outline-none"
-              />
-              <button className="bg-green-600 text-white px-6 py-2 rounded-r-lg hover:bg-green-700">
-                Subscribe
-              </button>
-            </div>
-          </div>
+      <h1 className="text-4xl md:text-5xl font-extrabold mt-4 leading-tight text-gray-900">
+        The best way to<br />stuff your wallet.
+      </h1>
 
-          <img
-            src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=600&h=600&fit=crop"
-            alt="Fresh vegetables"
-            className="rounded-xl shadow-lg"
-          />
-        </div>
-      </section>
+      <p className="text-gray-600 mt-4 max-w-md">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet
+        reiciendis tenetur consequuntur.
+      </p>
 
-      {/* FEATURE CARDS */}
-      <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-
-        <div className="flex items-center justify-between bg-[#f6ead9] p-6 rounded-xl shadow">
-          <div className="max-w-[60%]">
-            <h3 className="text-xl font-semibold">Everyday Fresh & Clean with Our Products</h3>
-            <p className="text-gray-600 mt-1">Organic vegetables and fruits</p>
-            <button className="mt-3 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
-              Shop Now
-            </button>
-          </div>
-          <img src="/images/Onions.png" alt="Onions" className="w-28 md:w-36" />
-        </div>
-
-        <div className="flex items-center justify-between bg-[#fde4e4] p-6 rounded-xl shadow">
-          <div className="max-w-[60%]">
-            <h3 className="text-xl font-semibold">Make your Breakfast Healthy and Easy</h3>
-            <p className="text-gray-600 mt-1">Fresh smoothies and healthy meals</p>
-            <button className="mt-3 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
-              Shop Now
-            </button>
-          </div>
-          <img src="/images/strawberry-milk.png" alt="smoothie" className="w-28 md:w-36" />
-        </div>
-
-        <div className="flex items-center justify-between bg-[#eaf1ff] p-6 rounded-xl shadow">
-          <div className="max-w-[60%]">
-            <h3 className="text-xl font-semibold">The best Organic Products Online</h3>
-            <p className="text-gray-600 mt-1">Quality products delivered to your door</p>
-            <button className="mt-3 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
-              Shop Now
-            </button>
-          </div>
-          <img src="/images/basket.png" alt="basket" className="w-28 md:w-36" />
-        </div>
-
-      </div>
-
-      
-     {/* POPULAR PRODUCTS */}
-<div className="max-w-7xl mx-auto px-4 mt-14">
-  <div className="flex items-center justify-between">
-    <h2 className="text-2xl font-semibold">Popular Products</h2>
-
-    {/* TABS */}
-    <div className="flex gap-6 text-sm text-gray-500">
-      {["All", "Milks & Dairies", "Coffees & Teas", "Pet Foods", "Meats", "Vegetables", "Fruits"].map((tab) => (
-        <button
-          key={tab}
-          onClick={() => setActiveTab(tab.toLowerCase())}
-          className={`hover:text-green-600 transition ${
-            activeTab === tab.toLowerCase() ? "text-green-600 font-medium" : ""
-          }`}
-        >
-          {tab}
+      {/* EMAIL INPUT */}
+      <div className="flex mt-8 bg-white rounded-full shadow-sm w-full max-w-md overflow-hidden">
+        <input
+          type="email"
+          placeholder="Your email address"
+          className="flex-1 px-5 py-3 text-sm outline-none"
+        />
+        <button className="bg-green-500 text-white px-6 text-sm font-semibold hover:bg-green-600">
+          Subscribe
         </button>
-      ))}
-    </div>
-  </div>
-
-  {/* PRODUCTS GRID */}
-  <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6 mt-8">
-    {popular.map((p, index) => (
-      <div
-        key={p.id}
-        className="bg-white border border-gray-200 rounded-xl p-4 shadow-sm hover:shadow-md transition"
-      >
-        {/* BADGE */}
-        <div className="flex justify-between">
-          <span
-            className={`text-xs px-2 py-1 rounded-full text-white 
-              ${
-                index % 3 === 0
-                  ? "bg-red-500"
-                  : index % 3 === 1
-                  ? "bg-green-500"
-                  : "bg-blue-500"
-              }
-            `}
-          >
-            {index % 3 === 0 ? "Hot" : index % 3 === 1 ? "New" : "Sale"}
-          </span>
-        </div>
-
-        {/* IMAGE */}
-        <div className="flex justify-center my-4">
-          <img
-            src={p.image_url}
-            alt={p.name}
-            className="w-28 h-28 object-contain"
-          />
-        </div>
-
-        {/* CATEGORY */}
-        <p className="text-xs text-gray-400 capitalize">{p.category || "Snack"}</p>
-
-        {/* TITLE */}
-        <h3 className="font-medium text-gray-700 leading-tight line-clamp-2 mt-1">
-          {p.name}
-        </h3>
-
-        {/* BRAND */}
-        <p className="text-xs text-gray-500 mt-1">
-          by <span className="text-green-600 font-medium">NestFood</span>
-        </p>
-
-        {/* PRICE ROW */}
-        <div className="flex items-center justify-between mt-3">
-          <div className="flex flex-col">
-            <span className="text-green-600 font-bold text-lg">
-              ${p.price.toFixed(2)}
-            </span>
-            {p.old_price && (
-              <span className="text-gray-400 text-sm line-through">
-                ${p.old_price.toFixed(2)}
-              </span>
-            )}
-          </div>
-
-          {/* ADD BUTTON */}
-          <button className="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-2 rounded-lg">
-            + Add
-          </button>
-        </div>
       </div>
-    ))}
+    </div>
+
+    {/* Right Image is NOT inside the grid, placed absolutely */}
+    <div className="relative w-full h-full">
+      <img
+        src="/lettuce.png"
+        className="absolute right-0 bottom-[-40px] w-[450px] md:w-[520px] object-contain"
+      />
+    </div>
+
   </div>
-</div>
+</section>
 
+      {/* ----------------------------------------------------- */}
+      {/* POPULAR PRODUCTS */}
+      {/* ----------------------------------------------------- */}
+      <div className="max-w-7xl mx-auto px-4 mt-14 mb-16">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-3xl font-bold text-gray-800">Popular Products</h2>
 
-      {/* DAILY BEST SELLS */}
-      <div className="max-w-7xl mx-auto px-4 mt-16">
-        <h2 className="text-2xl font-semibold">Daily Best Sells</h2>
-
-        <div className="flex gap-3 mt-4">
-          <button className="px-4 py-2 rounded-full bg-green-600 text-white">Featured</button>
-          <button className="px-4 py-2 rounded-full border">Popular</button>
-          <button className="px-4 py-2 rounded-full border">New Added</button>
+          {/* TABS */}
+          <div className="flex gap-8 text-sm">
+            {[
+              "All",
+              "Milks & Dairies",
+              "Coffees & Teas",
+              "Pet Foods",
+              "Meats",
+              "Vegetables",
+              "Fruits",
+            ].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab.toLowerCase())}
+                className={`hover:text-green-600 transition-colors ${
+                  activeTab === tab.toLowerCase()
+                    ? "text-green-600 font-semibold"
+                    : "text-gray-500"
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
-          {popular.slice(0, 4).map((p) => (
+        {/* PRODUCT GRID — 5 per row (like screenshot) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+          {products.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>
       </div>
 
-      {/* NEWSLETTER */}
+      {/* ----------------------------------------------------- */}
+{/* DAILY BEST SELLS */}
+{/* ----------------------------------------------------- */}
+
+<div className="max-w-7xl mx-auto px-4 mt-16">
+  {/* Heading */}
+  <div className="flex items-center justify-between">
+    <h2 className="text-2xl font-semibold">Daily Best Sells</h2>
+
+    {/* Tabs */}
+    <div className="flex gap-5 text-sm">
+      <button className="text-green-600 font-medium border-b-2 border-green-600 pb-1">
+        Featured
+      </button>
+      <button className="text-gray-500 hover:text-green-600 transition">Popular</button>
+      <button className="text-gray-500 hover:text-green-600 transition">
+        New added
+      </button>
+    </div>
+  </div>
+
+  {/* MAIN GRID */}
+  <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
+
+    {/* LEFT BANNER */}
+    <div className="md:col-span-1 relative rounded-xl overflow-hidden">
+      <img
+        src="/deal.png"
+        className="w-full h-full object-cover"
+        alt="Daily Best Banner"
+      />
+      <div className="absolute inset-0 flex flex-col justify-center p-6 text-white bg-black/40 backdrop-blur-sm">
+        <h2 className="text-3xl font-bold mb-4 leading-tight">
+          Bring nature<br />into your home
+        </h2>
+        <button className="bg-red-500 text-white px-5 py-2 rounded-full font-medium text-sm w-fit hover:bg-red-600 transition">
+          Shop Now →
+        </button>
+      </div>
+    </div>
+
+    {/* PRODUCT GRID - first 3 popular */}
+    <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {products.slice(0, 3).map((p) => (
+        <ProductCard key={p.id} product={p} />
+      ))}
+    </div>
+
+  </div>
+</div>
+
+
+
+      {/* ----------------------------------------------------- */}
+      {/* NEWSLETTER + FEATURES BAR  */}
+      {/* (same as your original file, unchanged) */}
+      {/* ----------------------------------------------------- */}
+
       <section className="bg-green-50 py-12 mt-16">
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
           <div>
@@ -211,7 +279,7 @@ export default function HomePage() {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="w-full px-4 py-2 rounded-l-lg border border-gray-300"
+                className="w-full px-4 py-2 rounded-l-lg border"
               />
               <button className="bg-green-600 text-white px-6 py-2 rounded-r-lg hover:bg-green-700">
                 Subscribe
@@ -221,13 +289,11 @@ export default function HomePage() {
 
           <img
             src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=400&h=300&fit=crop"
-            alt="Delivery man"
             className="rounded-xl shadow"
           />
         </div>
       </section>
 
-      {/* FEATURES BAR */}
       <div className="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
         {[
           { icon: "💰", title: "Best price & offers", text: "Orders $50 or more" },
@@ -248,4 +314,3 @@ export default function HomePage() {
     </>
   );
 }
-
