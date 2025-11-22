@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import { useCartStore } from "../../store/useCartStore";
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   price: number;
-  originalPrice?: number;
-  imageUrl: string;
-  categoryId?: number;
+  old_price?: number;
+  image_url: string;
+  category?: string;
 }
 
 interface Props {
@@ -41,7 +41,7 @@ export default function ProductCard({ product, badge }: Props) {
       <Link to={`/product/${product.id}`}>
         <div className="relative pb-[100%] overflow-hidden rounded-[10px] mb-4">
           <img
-            src={product.imageUrl}
+            src={product.image_url}
             alt={product.name}
             className="absolute top-0 left-0 w-full h-full object-cover rounded-[10px]"
           />
@@ -49,7 +49,7 @@ export default function ProductCard({ product, badge }: Props) {
       </Link>
 
       <div className="mt-3">
-        <p className="text-xs text-[--color-text-lighter] mb-1">Category</p>
+        <p className="text-xs text-[--color-text-lighter] mb-1">{product.category || "Category"}</p>
 
         <p className="text-[0.95rem] font-medium mb-2 text-[--color-text] leading-[1.3] line-clamp-2">
           {product.name}
@@ -69,9 +69,9 @@ export default function ProductCard({ product, badge }: Props) {
               ${product.price.toFixed(2)}
             </span>
 
-            {product.originalPrice && (
+            {product.old_price && (
               <span className="line-through text-[--color-text-lighter] text-[0.9rem]">
-                ${product.originalPrice.toFixed(2)}
+                ${product.old_price.toFixed(2)}
               </span>
             )}
           </div>
@@ -83,7 +83,7 @@ export default function ProductCard({ product, badge }: Props) {
                 productId: product.id,
                 name: product.name,
                 price: product.price,
-                imageUrl: product.imageUrl,
+                imageUrl: product.image_url,
               })
             }
           >

@@ -9,85 +9,42 @@ export const products: Product[] = [
   {
     id: 101,
     name: "Seeds Of Change Organic Quinoa",
-    slug: "organic-quinoa",
-    description: "Protein-rich quinoa sourced from certified organic farms.",
-    imageUrl: "https://images.unsplash.com/photo-1505253468034-514d2507d914?auto=format&fit=crop&w=600&q=80",
-    badge: { label: "Hot", variant: "hot" },
-    unitLabel: "500g pack",
+    image_url: "https://images.unsplash.com/photo-1505253468034-514d2507d914?auto=format&fit=crop&w=600&q=80",
     price: 32.85,
-    originalPrice: 39.0,
-    rating: 4.9,
-    reviewsCount: 72,
-    isFeatured: true,
-    isDailyDeal: true,
-    highlightCopy: "Gluten Free • High Protein • Fiber Rich",
-    categoryId: 5,
+    old_price: 39.0,
+    category: "Snacks",
   },
-
-  
-
   {
     id: 103,
     name: "Blue Diamond Almonds Lightly Salted",
-    slug: "almonds-light",
-    description: "Premium Californian almonds, slow roasted with sea salt.",
-    imageUrl: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=600&q=80",
-    badge: { label: "-15%", variant: "sale" },
-    unitLabel: "200g pack",
+    image_url: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=600&q=80",
     price: 23.85,
-    originalPrice: 28.0,
-    rating: 4.8,
-    reviewsCount: 112,
-    categoryId: 3,
+    old_price: 28.0,
+    category: "Snacks",
   },
-
   {
     id: 104,
     name: "Encore Seafoods Stuffed Salmon",
-    slug: "stuffed-salmon",
-    description: "Restaurant-style stuffed salmon fillets ready to bake.",
-    imageUrl: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80",
-    badge: { label: "Sale", variant: "sale" },
-    unitLabel: "2 fillets",
+    image_url: "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80",
     price: 35.85,
-    originalPrice: 42.0,
-    rating: 4.6,
-    reviewsCount: 39,
-    categoryId: 4,
+    old_price: 42.0,
+    category: "Meats",
   },
-
-  
-
   {
     id: 106,
     name: "Organic Vanilla Farm Watermelon",
-    slug: "organic-watermelon",
-    description: "Seedless watermelon, naturally sweet and hydrating.",
-    imageUrl: "https://images.unsplash.com/photo-1439127989242-c3749a012eac?auto=format&fit=crop&w=600&q=80",
-    badge: { label: "New", variant: "new" },
-    unitLabel: "5kg whole",
+    image_url: "https://images.unsplash.com/photo-1439127989242-c3749a012eac?auto=format&fit=crop&w=600&q=80",
     price: 48.85,
-    originalPrice: 52.0,
-    rating: 4.5,
-    reviewsCount: 33,
-    categoryId: 6,
+    old_price: 52.0,
+    category: "Fruits",
   },
-
-  
-
   {
     id: 108,
     name: "Simply Lemonade with Raspberry",
-    slug: "rasp-lemonade",
-    description: "Small batch lemonade blended with fresh raspberries.",
-    imageUrl: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=600&q=80",
-    badge: { label: "Hot", variant: "hot" },
-    unitLabel: "1L bottle",
+    image_url: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&w=600&q=80",
     price: 15.95,
-    originalPrice: 19.0,
-    rating: 4.8,
-    reviewsCount: 48,
-    categoryId: 2,
+    old_price: 19.0,
+    category: "Drinks",
   },
 ];
  
@@ -205,7 +162,9 @@ export default function HomePage() {
 
         {/* PRODUCT GRID — 5 per row (like screenshot) */}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
-          {products.map((p) => (
+          {popular.length > 0 ? popular.map((p) => (
+            <ProductCard key={p.id} product={p} />
+          )) : products.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>
@@ -254,7 +213,7 @@ export default function HomePage() {
 
     {/* PRODUCT GRID - first 3 popular */}
     <div className="md:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      {products.slice(0, 3).map((p) => (
+      {(popular.length > 0 ? popular : products).slice(0, 3).map((p) => (
         <ProductCard key={p.id} product={p} />
       ))}
     </div>
